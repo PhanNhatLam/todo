@@ -1,0 +1,12 @@
+extends ../layouts/common.pug
+
+block content
+  form(action="/users/" + user.id + "/update", method="POST")
+    li
+      label Name 
+      span &nbsp;
+      input(type="text", name="name")
+    li
+      label Phone 
+      input(type="text", name="phone") 
+      button(class="btn btn-success") Update

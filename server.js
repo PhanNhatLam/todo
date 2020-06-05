@@ -3,48 +3,51 @@
 
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
-const express = require('express');
+const express = require("express");
 const app = express();
-const bodyParser = require('body-parser')
+
+var bodyParser = require('body-parser');
+var bookRoute = require('./routes/book.route');
+var userRoute = require('./routes/user.route');
+var transactionRoute = require('./routes/transaction.route');
 
 app.set("view engine", "pug");
 app.set("views", "./views");
 
-app.use(bodyParser.json()) // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-// https://expressjs.com/en/starter/basic-routing.html
-app.get('/', (req, res) => {
-  res.send('I love CodersX');
+// index page
+app.get("/", (req, res) => {
+  res.send("My library");
 });
 
-var cvs = [
-  { id: 1, todo: 'Đi chợ'}, 
-  { id: 2, todo: 'Nấu cơm'}, 
-  { id: 3, todo: 'Rửa bát'},
-  { id: 4, todo: 'Học code tại CodersX'}
-];
+// Books
+app.use('/books', bookRoute);
 
-app.get('/todos', function(req, res) {
-  var q = req.query.q;
-  var matchedData = cvs;
-  if (q) {
-    matchedData = cvs.filter(function(cv) {
-      return cvs.todo.toLowerCase().indexOf(q.toLowerCase()) > -1;
-    });
-  }
-  
-  res.render('todos/index', {
-    cvs: matchedData
-  });
-});
+// Users
+app.use('/users', userRoute);
 
-app.post('/todos/create', function(req, res) {
-  cvs.push(req.body);
-	res.redirect('back');
-})
+// Transactions
+app.use('/transactions', transactionRoute);
 
 // listen for requests :)
-app.listen(process.env.PORT, () => {
-  console.log("Server listening on port " + process.env.PORT);
+const listener = app.listen(process.env.PORT, () => {
+  console.log("Your app is listening on port " + listener.address().port);
 });
+
+/**
+bookController.update = async (req, res, next) => {
+  // render view update book
+}
+
+bookController.postUpdate = async (req, res, next) => {
+  var { id } = req.params;
+  var book = db.get('books').find({ id: id });
+  book.title = req.body.title;
+  book.save() // luu lai vo trong db
+  return res.render('books');
+}
+*/
+// app.get('/book/:id/update', bookController.update);
+// app.post('/book/:id/update', bookController.postUpdate);

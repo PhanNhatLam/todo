@@ -1,0 +1,14 @@
+extends ../layouts/common.pug
+
+block content
+  h1 Info of Transaction
+
+  p
+    b User Id: 
+    span= transaction.userId
+  p
+    b Book Id: 
+    span= transaction.bookId
+  p
+    b Status Complete: 
+    span= transaction.isComplete

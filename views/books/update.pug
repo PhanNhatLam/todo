@@ -1,0 +1,12 @@
+extends ../layouts/common.pug
+
+block content
+  form(action="/books/" + book.id + "/update", method="POST")
+    li
+      label Title 
+      span &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp;
+      input(type="text", name="title")
+    li
+      label Description 
+      input(type="text", name="description") 
+    button(class="btn btn-success") Update
