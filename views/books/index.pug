@@ -1,0 +1,31 @@
+extends ../layouts/common.pug
+
+block content
+  form(action="/books", method="GET")
+    label Book 
+    input(type="text", name="q", value=q)
+    button(class="btn btn-success") Search
+
+  form(action="/books/create", method="POST")
+    li
+      label Title 
+      span &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp;
+      input(type="text", name="title")
+    li
+      label Description 
+      input(type="text", name="description") 
+      button(class="btn btn-success") Create
+
+  ul
+    each book in books
+      li
+        span= book.title
+        span &nbsp;
+        a(href='/books/' + book.id)
+          label View
+        span &nbsp;
+        a(href='/books/' + book.id + '/delete')
+          label Delete
+        span &nbsp;
+        a(href='/books/' + book.id + '/update')
+          label Update

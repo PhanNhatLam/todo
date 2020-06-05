@@ -1,0 +1,30 @@
+extends ../layouts/common.pug
+
+block content
+  form(action="/users", method="GET")
+    label User 
+    input(type="text", name="q", value=q)
+    button(class="btn btn-success") Search
+
+  form(action="/users/create", method="POST")
+    li
+      label Name 
+      input(type="text", name="name")
+    li
+      label Phone 
+      input(type="text", name="phone") 
+      button(class="btn btn-success") Create
+
+  ul
+    each user in users
+      li
+        span= user.name
+        span &nbsp;
+        a(href='/users/' + user.id)
+          label View
+        span &nbsp;
+        a(href='/users/' + user.id + '/delete')
+          label Delete
+        span &nbsp;
+        a(href='/users/' + user.id + '/update')
+          label Update

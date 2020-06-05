@@ -1,0 +1,21 @@
+extends ../layouts/common.pug
+
+block content
+  a(href="/transactions/create") Create a new transaction
+
+  ul
+    each transaction in transactions
+      li
+        span Transaction ID: 
+        span= transaction.id
+        span &nbsp;
+        a(href='/transactions/' + transaction.id)
+          label View
+        span &nbsp;
+        a(href='/transactions/' + transaction.id + '/delete')
+          label Delete
+        span &nbsp;
+        if transaction.isComplete
+          label &radic;
+        else
+          a(href='/transactions/' + transaction.id + '/complete') Hoàn thành
