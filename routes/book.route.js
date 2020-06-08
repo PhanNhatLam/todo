@@ -6,6 +6,11 @@ var router = express.Router();
 
 router.get("/", controller.index);
 
+// Create a book
+router.get("/create", controller.getCreate);
+
+router.post("/create", controller.postCreate);
+
 // View info of a book
 router.get("/:id", controller.view);
 
@@ -16,8 +21,5 @@ router.get("/:id/delete", controller.delete);
 router.get("/:id/update", controller.getUpdate);
 
 router.post("/:id/update", controller.postUpdate);
-
-// Create a book
-router.post("/create", controller.postCreate);
 
 module.exports = router;

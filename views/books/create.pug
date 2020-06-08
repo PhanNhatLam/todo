@@ -1,15 +1,15 @@
 extends ../layouts/common.pug
 
 block content
-  h1 Update book
+  h1 Create book
   
-  form(action="/books/" + book.id + "/update", method="POST")
+  form(action="/books/create", method="POST")
     .form-group
       label(for="title") Title 
       input#title.form-control(type="text", name="title")
       
     .form-group
       label(for="description") Description 
-      input#description.form-control(type="text", name="description") 
+      input#description.form-control(type="text", name="description")
       
-    button(class="btn btn-success") Update
+    button(class="btn btn-success") Create

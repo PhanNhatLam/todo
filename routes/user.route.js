@@ -6,6 +6,11 @@ var router = express.Router();
 
 router.get("/", controller.index);
 
+// Create a user
+router.get("/create", controller.getCreate);
+
+router.post("/create", controller.postCreate);
+
 // View info of a user
 router.get("/:id", controller.view);
 
@@ -16,8 +21,5 @@ router.get("/:id/delete", controller.delete);
 router.get("/:id/update", controller.getUpdate);
 
 router.post("/:id/update", controller.postUpdate);
-
-// Create a user
-router.post("/create", controller.postCreate);
 
 module.exports = router;

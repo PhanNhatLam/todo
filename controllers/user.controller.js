@@ -63,10 +63,14 @@ module.exports.postUpdate = function(req, res) {
   res.redirect("/users");
 };
 
+module.exports.getCreate = function(req, res) {
+  res.render("users/create");
+};
+
 module.exports.postCreate = function(req, res) {
   req.body.id = shortid.generate();
   db.get("users")
     .push(req.body)
     .write();
-  res.redirect("back");
+  res.redirect("/users");
 };

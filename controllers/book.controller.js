@@ -64,10 +64,14 @@ module.exports.postUpdate = function(req, res) {
   res.redirect("/books");
 };
 
+module.exports.getCreate = function(req, res) {
+  res.render("books/create");
+};
+
 module.exports.postCreate = function(req, res) {
   req.body.id = shortid.generate();
   db.get("books")
     .push(req.body)
     .write();
-  res.redirect("back");
+  res.redirect("/books");
 };
