@@ -6,13 +6,13 @@ var router = express.Router();
 
 router.get("/", controller.index);
 
-// Delete a transaction
-router.get("/:id/delete", controller.delete);
-
 // Create a transaction
 router.get("/create", controller.getCreate);
 
 router.post("/create", controller.postCreate);
+
+// Delete a transaction
+router.get("/:id/delete", controller.delete);
 
 // View info of a transaction
 router.get("/:id", controller.view);

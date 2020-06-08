@@ -1,21 +1,21 @@
 extends ../layouts/common.pug
 
 block content
-  a(href="/transactions/create") Create a new transaction
+  h1 
+    span.mr-3 Transactions
+    a.btn.btn-primary(href="/transactions/create") New
 
-  ul
+  table.table
+    tr
+      td Transaction ID
+      td Actions
     each transaction in transactions
-      li
-        span Transaction ID: 
-        span= transaction.id
-        span &nbsp;
-        a(href='/transactions/' + transaction.id)
-          label View
-        span &nbsp;
-        a(href='/transactions/' + transaction.id + '/delete')
-          label Delete
-        span &nbsp;
-        if transaction.isComplete
-          label &radic;
-        else
-          a(href='/transactions/' + transaction.id + '/complete') Hoàn thành
+      tr
+        td= transaction.id
+        td
+          a.btn.btn-light(href='/transactions/' + transaction.id) View
+          a.btn.btn-light(href='/transactions/' + transaction.id + '/delete') Delete
+          if transaction.isComplete
+            label.text-success &radic;
+          else
+            a.btn.btn-light(href='/transactions/' + transaction.id + '/complete') Hoàn thành
