@@ -5,10 +5,13 @@ block content
     span.mr-3 Transactions
     a.btn.btn-primary(href="/transactions/create") New
 
+  if error
+    .alert.alert-danger= error
+  
   table.table
     tr
-      td Transaction ID
-      td Actions
+      td.font-weight-bold Transaction ID
+      td.font-weight-bold Actions
     each transaction in transactions
       tr
         td= transaction.id
