@@ -50,12 +50,18 @@
       "userId": "A5cCnOufX",
       "bookId": "jq3Q8TO5u",
       "id": "5EAHgtMtl",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "userId": "A5cCnOufX",
       "bookId": "jq3Q8TO5u",
       "id": "prDN-7LGu",
+      "isComplete": true
+    },
+    {
+      "userId": "6D13z38V2",
+      "bookId": "jq3Q8TO5u",
+      "id": "Vc8v3lLp2",
       "isComplete": true
     }
   ]
