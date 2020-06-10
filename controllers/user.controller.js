@@ -70,27 +70,6 @@ module.exports.getCreate = function(req, res) {
 module.exports.postCreate = function(req, res) {
   req.body.id = shortid.generate();
   
-  var phone = Number(req.body.phone);
-  
-  console.log(phone);
-  
-  var errors = [];
-  
-  if (Number.isNaN(phone)) {
-    errors.push('Điện thoại phải là số!')
-  }
-  
-  if (req.body.name.length > 30) {
-    errors.push('Tên quá dài, vui lòng nhập lại!')
-  }
-  
-  if (errors.length) {
-    return res.render("users/create", {
-      errors,
-      values: req.body
-    })
-  }
-  
   db.get("users")
     .push(req.body)
     .write();

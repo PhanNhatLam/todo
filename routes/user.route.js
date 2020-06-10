@@ -1,6 +1,7 @@
 var express = require('express');
 
 var controller = require('../controllers/user.controller');
+var validate = require('../validate/user.validate');
 
 var router = express.Router();
 
@@ -9,7 +10,7 @@ router.get("/", controller.index);
 // Create a user
 router.get("/create", controller.getCreate);
 
-router.post("/create", controller.postCreate);
+router.post("/create", validate.postCreate, controller.postCreate);
 
 // View info of a user
 router.get("/:id", controller.view);
