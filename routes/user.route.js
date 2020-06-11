@@ -2,7 +2,7 @@ var express = require('express');
 
 var controller = require('../controllers/user.controller');
 var validate = require('../validate/user.validate');
-var middleware = require('../middleware/cookie.middleware');
+var middleware = require('../middlewares/cookie.middleware');
 
 var router = express.Router();
 
