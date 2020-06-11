@@ -2,10 +2,11 @@ var express = require('express');
 
 var controller = require('../controllers/user.controller');
 var validate = require('../validate/user.validate');
+var middleware = require('../middleware/cookie.middleware');
 
 var router = express.Router();
 
-router.get("/", controller.index);
+router.get("/", middleware.cookie, controller.index);
 
 // Create a user
 router.get("/create", controller.getCreate);
